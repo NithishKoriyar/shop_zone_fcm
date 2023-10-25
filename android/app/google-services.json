@@ -1,13 +1,13 @@
 {
   "project_info": {
-    "project_number": "982305437014",
-    "project_id": "shopzone-79842",
-    "storage_bucket": "shopzone-79842.appspot.com"
+    "project_number": "472697668509",
+    "project_id": "shopzone-77ba1",
+    "storage_bucket": "shopzone-77ba1.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:982305437014:android:3b26e560fdefae00afd2f7",
+        "mobilesdk_app_id": "1:472697668509:android:549aa83f9a3a7ccc492574",
         "android_client_info": {
           "package_name": "com.atoz.shop_zone"
         }
@@ -15,7 +15,7 @@
       "oauth_client": [],
       "api_key": [
         {
-          "current_key": "AIzaSyDOQi6LVLYsLvzbyKLlgr_MddossJupykw"
+          "current_key": "AIzaSyCKSKNC4gdcBRhfgN178rBECQUz77eWXIs"
         }
       ],
       "services": {

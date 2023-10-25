@@ -3,7 +3,7 @@ class API {
   //static const hostConnect ="http://192.168.171.218/Amazon%20Clone/shop_zone_fcm/shop_zone_api/";
 
   //! web server
-  static const hostConnect = "http://nithish.tech/shop_zone_api/";
+  static const hostConnect = "https://nithish.atozasindia.in/shop_zone_api/";
   //!------------------------------USER API CONNECTIONS --------------------------------
 
   static const hostConnectUser = "$hostConnect/user";
