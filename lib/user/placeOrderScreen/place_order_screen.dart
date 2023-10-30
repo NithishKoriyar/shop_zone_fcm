@@ -97,18 +97,19 @@ class _PlaceOrderScreenState extends State<PlaceOrderScreen> {
     }
     print("sellerUID is ${sellerUID}");
     String sellerDeviceToken = await getSellerDeviceTokenFromAPI(sellerUID);
-    print(
-        "Retrieved seller device token-------------------------------------------------------------------------------------------: ${sellerDeviceToken}");
+    print("Retrieved seller device token-------------------------------------------------------------------------------------------: ${sellerDeviceToken}");
 
     if (sellerDeviceToken.isNotEmpty) {
-      print(
-          "-------------------------------------notificationFormat----------------------------------------------");
+      //print("-------------------------------------notificationFormat----------------------------------------------");
 
       notificationFormat(
         sellerDeviceToken,
         userOrderID,
         userName,
       );
+      // print(sellerDeviceToken);
+      // print(userOrderID);
+      // print(userName);
     }
   }
 
@@ -136,6 +137,7 @@ class _PlaceOrderScreenState extends State<PlaceOrderScreen> {
   }
 
   notificationFormat(sellerDeviceToken, getUserOrderID, userName) {
+            print("-----------------------------------------notificationFormat sending------------------------------------------");
     Map<String, String> headerNotification = {
       'Content-Type': 'application/json',
       'Authorization': fcmServerToken,

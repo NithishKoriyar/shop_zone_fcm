@@ -7,12 +7,10 @@ import 'package:shop_zone/user/functions/functions.dart';
 import 'package:http/http.dart' as http;
 import 'package:shop_zone/user/userPreferences/current_user.dart';
 
-
-class PushNotificationsSystem
-{
+class PushNotificationsSystem {
   FirebaseMessaging messaging = FirebaseMessaging.instance;
 
-    final CurrentUser currentUserController = Get.put(CurrentUser());
+  final CurrentUser currentUserController = Get.put(CurrentUser());
 
   late String userName;
   late String userEmail;
@@ -22,14 +20,11 @@ class PushNotificationsSystem
   PushNotificationsSystem() {
     _initializeData();
   }
-    _initializeData() async {
+  _initializeData() async {
     await currentUserController.getUserInfo();
     setUserInfo();
     printUserInfo();
   }
-
-
-
 
   void setUserInfo() {
     userName = currentUserController.user.user_name;
@@ -46,14 +41,13 @@ class PushNotificationsSystem
   }
 
   //notifications arrived/received
-  Future whenNotificationReceived(BuildContext context) async
-  {
+  Future whenNotificationReceived(BuildContext context) async {
     //1. Terminated
     //When the app is completely closed and opened directly from the push notification
-    FirebaseMessaging.instance.getInitialMessage().then((RemoteMessage? remoteMessage)
-    {
-      if(remoteMessage != null)
-      {
+    FirebaseMessaging.instance
+        .getInitialMessage()
+        .then((RemoteMessage? remoteMessage) {
+      if (remoteMessage != null) {
         //open app and show notification data
         showNotificationWhenOpenApp(
           remoteMessage.data["userOrderId"],
@@ -64,10 +58,8 @@ class PushNotificationsSystem
 
     //2. Foreground
     //When the app is open and it receives a push notification
-    FirebaseMessaging.onMessage.listen((RemoteMessage? remoteMessage)
-    {
-      if(remoteMessage != null)
-      {
+    FirebaseMessaging.onMessage.listen((RemoteMessage? remoteMessage) {
+      if (remoteMessage != null) {
         //directly show notification data
         showNotificationWhenOpenApp(
           remoteMessage.data["userOrderId"],
@@ -78,10 +70,8 @@ class PushNotificationsSystem
 
     //3. Background
     //When the app is in the background and opened directly from the push notification.
-    FirebaseMessaging.onMessageOpenedApp.listen((RemoteMessage? remoteMessage)
-    {
-      if(remoteMessage != null)
-      {
+    FirebaseMessaging.onMessageOpenedApp.listen((RemoteMessage? remoteMessage) {
+      if (remoteMessage != null) {
         //open the app - show notification data
         showNotificationWhenOpenApp(
           remoteMessage.data["userOrderId"],
@@ -92,11 +82,8 @@ class PushNotificationsSystem
   }
 
   //device recognition token
-  Future generateDeviceRecognitionToken() async
-  {
-
-
-        String? registrationDeviceToken = await messaging.getToken();
+  Future generateDeviceRecognitionToken() async {
+    String? registrationDeviceToken = await messaging.getToken();
 
 // Replace the Firestore update with HTTP POST request to your API
     final response = await http.post(
@@ -125,11 +112,10 @@ class PushNotificationsSystem
     messaging.subscribeToTopic("allUsers");
   }
 
-  showNotificationWhenOpenApp(userOrderId, context)
-  {
+  showNotificationWhenOpenApp(userOrderId, context) {
     showReusableSnackBar(
-        context,
-        "your Parcel (# $userOrderId) has been shifted successfully by the seller.",
+      context,
+      "your Parcel (# $userOrderId) has been shifted successfully by the seller.",
     );
   }
 }
